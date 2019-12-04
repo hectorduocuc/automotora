@@ -1,0 +1,39 @@
+{% extends 'core/base.html' %}
+
+
+{% block contenido %}
+<h2>Registrar Automovil</h2>
+<form action="" id="formularioAutomovil" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="">Patente</label>
+    <input type="text" name="txtPatente" id="txtPatente">
+    <br>
+    <label for="">Marca</label>
+    <select name="cboMarca" id="cboMarca">
+        <option value="">Seleccionar</option>
+
+        {% for m in marcas %}
+
+        <option value="{{ m.id }}">{{ m.nombre }}</option>
+
+        {% endfor %}
+       
+    </select>
+    <br>
+    <label for="">Modelo</label>
+    <input type="text" name="txtModelo" id="txtModelo">
+    <br>
+    <label for="">Año</label>
+    <input type="number" name="txtAnio" id="txtAnio">
+    <br>
+    <label>Imagen</label>
+    <input type="file" name="txtImagen" id="txtImagen">
+    <br>
+
+    
+    <input type="submit" name="btnAnio" id="btnAnio" value="Guardar">
+</form>
+
+
+<h3>{{ mensaje}}</h3>
+{% endblock contenido %}

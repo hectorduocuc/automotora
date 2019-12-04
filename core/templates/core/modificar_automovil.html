@@ -1,0 +1,44 @@
+{% extends 'core/base.html' %}
+
+
+{% block contenido %}
+<h2>Modificar Automovil</h2>
+<form action="" id="formularioAutomovil" method="POST">
+    {% csrf_token %}
+
+    <input type="hidden" name="txtId" id="txtId" value="{{ auto.id }}">
+
+
+    <label for="">Patente</label>
+    <input type="text" name="txtPatente" id="txtPatente" value="{{ auto.patente }}">
+    <br>
+    <label for="">Marca</label>
+    <select name="cboMarca" id="cboMarca">
+        <option value="">Seleccionar</option>
+
+        {% for m in marcas %}
+
+        <option 
+        
+        {% if m.id == auto.marca.id %}
+        {{'selected'}}
+        {% endif %}
+        
+        value="{{ m.id }}">{{ m.nombre }}</option>
+
+        {% endfor %}
+       
+    </select>
+    <br>
+    <label for="">Modelo</label>
+    <input type="text" name="txtModelo" id="txtModelo" value="{{ auto.modelo }}">
+    <br>
+    <label for="">Año</label>
+    <input type="number" name="txtAnio" id="txtAnio" value="{{ auto.anio }}">
+    <br>
+    <input type="submit" name="btnAnio" id="btnAnio" value="Modificar">
+</form>
+
+
+<h3>{{ mensaje}}</h3>
+{% endblock contenido %}
